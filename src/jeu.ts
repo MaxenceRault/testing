@@ -19,6 +19,9 @@ export class Jeu {
   }
 
   score(): string {
+    if (this.pointsJoueur1 > QUARANTE) return `Victoire ${this.joueur1}`;
+    if (this.pointsJoueur2 > QUARANTE) return `Victoire ${this.joueur2}`;
+
     if (this.pointsJoueur1 === this.pointsJoueur2) {
       return this.annonceEgalite(this.pointsJoueur1);
     }
