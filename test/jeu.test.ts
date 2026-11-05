@@ -29,4 +29,11 @@ describe("Jeu : les points", () => {
   ])("les points s'annoncent Zéro, Quinze, Trente, Quarante, joueur 1 en premier (%i-%i → %s)", (alice, bob, attendu) => {
     expect(jeuA(alice, bob).score()).toBe(attendu);
   });
+
+  it.each([
+    [1, 1, "Quinze-A"],
+    [2, 2, "Trente-A"],
+  ])("à égalité de points (hors Zéro et Quarante), le score s'annonce « A » (%i-%i → %s)", (alice, bob, attendu) => {
+    expect(jeuA(alice, bob).score()).toBe(attendu);
+  });
 });
