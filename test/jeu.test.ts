@@ -42,4 +42,21 @@ describe("Jeu : le point décisif", () => {
   it("à Quarante-Quarante, le score est Égalité", () => {
     expect(jeuA(3, 3).score()).toBe("Égalité");
   });
+
+  it("à Égalité, il n'y a pas d'avantage : le point suivant gagne le match", () => {
+    const jeu = jeuA(3, 3);
+    jeu.pointPour("Bob");
+
+    expect(jeu.score()).toBe("Victoire Bob");
+  });
+});
+
+describe("Jeu : la victoire", () => {
+  it("le joueur qui marque alors qu'il est à Quarante gagne le match", () => {
+    expect(jeuA(4, 0).score()).toBe("Victoire Alice");
+  });
+
+  it("le joueur 2 peut aussi gagner le match", () => {
+    expect(jeuA(2, 4).score()).toBe("Victoire Bob");
+  });
 });
