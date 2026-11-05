@@ -15,4 +15,14 @@ describe("Match en un set : le score", () => {
     expect(match.jeuxGagnes("Bob")).toBe(0);
     expect(match.scoreDuJeuEnCours()).toBe("Zéro-Zéro");
   });
+
+  it("les points marqués font avancer le jeu en cours, avec les règles d'un jeu", () => {
+    const match = new MatchEnUnSet("Alice", "Bob", classementDummy);
+
+    match.pointPour("Alice");
+    match.pointPour("Alice");
+    match.pointPour("Bob");
+
+    expect(match.scoreDuJeuEnCours()).toBe("Trente-Quinze");
+  });
 });
