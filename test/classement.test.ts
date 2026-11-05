@@ -28,4 +28,18 @@ describe("Jeu : le classement du tournoi", () => {
 
     expect(classement.enregistrer).toHaveBeenCalledWith("Bob", "Alice");
   });
+
+  // Spy : on compte les appels à enregistrer, ce que seul un double qui
+  // garde la trace de ses appels permet de faire.
+  it("le résultat n'est enregistré qu'une seule fois, même si des points sont marqués après la victoire", () => {
+    const classement: Classement = { enregistrer: vi.fn() };
+    const jeu = new Jeu("Alice", "Bob", classement);
+
+    for (let i = 0; i < 4; i++) jeu.pointPour("Alice");
+    jeu.pointPour("Alice");
+    for (let i = 0; i < 4; i++) jeu.pointPour("Bob");
+
+    expect(classement.enregistrer).toHaveBeenCalledTimes(1);
+    expect(jeu.score()).toBe("Victoire Alice");
+  });
 });
