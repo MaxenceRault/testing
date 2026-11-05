@@ -16,6 +16,9 @@ export class Jeu {
   pointPour(joueur: string): void {
     if (joueur === this.joueur1) this.pointsJoueur1++;
     else this.pointsJoueur2++;
+
+    if (this.pointsJoueur1 > QUARANTE) this.classement.enregistrer(this.joueur1, this.joueur2);
+    if (this.pointsJoueur2 > QUARANTE) this.classement.enregistrer(this.joueur2, this.joueur1);
   }
 
   score(): string {
