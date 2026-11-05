@@ -37,3 +37,9 @@ describe("Jeu : les points", () => {
     expect(jeuA(alice, bob).score()).toBe(attendu);
   });
 });
+
+describe("Jeu : le point décisif", () => {
+  it("à Quarante-Quarante, le score est Égalité", () => {
+    expect(jeuA(3, 3).score()).toBe("Égalité");
+  });
+});
